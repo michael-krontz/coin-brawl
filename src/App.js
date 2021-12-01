@@ -7,7 +7,7 @@ const tweetIcon = <FontAwesomeIcon icon={faRetweet} />
 const accountIcon = <FontAwesomeIcon icon={faUserCircle} />
 var _ = require('lodash')
 
-let masterFeed = []
+let masterFeedRaw = []
 
 let Parser = require('rss-parser');
 let parser = new Parser();
@@ -18,21 +18,19 @@ let parser = new Parser();
   console.log(feed.title);
 
   feed.items.forEach(item => {
-    masterFeed.push(item.title)
+    masterFeedRaw.push(item.title)
   });
+  
+  let masterFeedLowercased = (_.lowerCase(masterFeedRaw))
+  let masterFeed = (_.split(masterFeedLowercased, ` `))
 
-  let masterFeedSplit = (_.split(masterFeed, ` `))
-  // console.log(masterFeed)
-  // var str = masterFeed;
+  var coinTicker = 'doge';
 
-  var coinTicker = 'DOGE';
 
-  var coinCount = [...masterFeedSplit].filter(x => x === coinTicker).length;
-  console.log(masterFeedSplit)
-  console.log("doge count: " + coinCount)
+  var coinTickerCount = [...masterFeed].filter(x => x === coinTicker).length;
 
-  // console.log(masterFeedSplit)
-
+  console.log(masterFeed)
+  console.log("doge count: " + coinTickerCount)
 
 })();
 
