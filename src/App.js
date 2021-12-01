@@ -6,6 +6,24 @@ const searchIcon = <FontAwesomeIcon icon={faSearch} />
 const tweetIcon = <FontAwesomeIcon icon={faRetweet} />
 const accountIcon = <FontAwesomeIcon icon={faUserCircle} />
 
+let masterFeed = []
+
+let Parser = require('rss-parser');
+let parser = new Parser();
+
+(async () => {
+
+  let feed = await parser.parseURL('https://cointelegraph.com/rss/tag/altcoin');
+  console.log(feed.title);
+
+  feed.items.forEach(item => {
+    masterFeed.push(item.title)
+  });
+
+  console.log(masterFeed)
+})();
+
+
 function CoinCard() {
   return (
     <div className="coin-card">
@@ -52,13 +70,11 @@ function JoinCard() {
   )
 }
 
-
 function JoinButton() {
   return (
     <button className="join-button">Join</button>
   )
 }
-
 
 function App() {
   return (
