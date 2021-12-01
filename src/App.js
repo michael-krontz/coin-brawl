@@ -5,6 +5,7 @@ const headlineIcon = <FontAwesomeIcon icon={faNewspaper} />
 const searchIcon = <FontAwesomeIcon icon={faSearch} />
 const tweetIcon = <FontAwesomeIcon icon={faRetweet} />
 const accountIcon = <FontAwesomeIcon icon={faUserCircle} />
+var _ = require('lodash')
 
 let masterFeed = []
 
@@ -20,7 +21,19 @@ let parser = new Parser();
     masterFeed.push(item.title)
   });
 
-  console.log(masterFeed)
+  let masterFeedSplit = (_.split(masterFeed, ` `))
+  // console.log(masterFeed)
+  // var str = masterFeed;
+
+  var coinTicker = 'DOGE';
+
+  var coinCount = [...masterFeedSplit].filter(x => x === coinTicker).length;
+  console.log(masterFeedSplit)
+  console.log("doge count: " + coinCount)
+
+  // console.log(masterFeedSplit)
+
+
 })();
 
 
