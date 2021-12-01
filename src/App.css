@@ -166,6 +166,17 @@
   color: #444444;
 }
 
+.header-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.account-icon {
+  margin-left: auto;
+  margin-right: 8px;
+}
+
 .join-card {
   width: 90vw;
   height: 230px;

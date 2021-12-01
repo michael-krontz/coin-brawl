@@ -1,13 +1,10 @@
 import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faNewspaper } from '@fortawesome/free-solid-svg-icons'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { faRetweet } from '@fortawesome/free-solid-svg-icons'
-
-
+import { faNewspaper, faSearch, faRetweet, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 const headlineIcon = <FontAwesomeIcon icon={faNewspaper} />
 const searchIcon = <FontAwesomeIcon icon={faSearch} />
 const tweetIcon = <FontAwesomeIcon icon={faRetweet} />
+const accountIcon = <FontAwesomeIcon icon={faUserCircle} />
 
 function CoinCard() {
   return (
@@ -24,6 +21,7 @@ function CoinCard() {
             <div className="coin-price-usd">$0.22</div>
             <div className="coin-price-ticker">+$0.000521 (0.24%)</div>
           </div>
+          
           <div className="coin-card-content-right">
             <div className="stat-wrapper">
               <div className="headline-stat">7</div>
@@ -66,7 +64,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        Coin Brawl
+        <div className="header-wrapper">
+          <div>Coin Brawl</div>
+          <div className="account-icon">{accountIcon}</div>
+        </div>
       </header>
       <CoinCard></CoinCard>
       <CoinCard></CoinCard>
