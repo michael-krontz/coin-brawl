@@ -8,6 +8,7 @@ const accountIcon = <FontAwesomeIcon icon={faUserCircle} />
 var _ = require('lodash')
 
 let masterFeedRaw = []
+let coinRank = []
 
 let Parser = require('rss-parser');
 let parser = new Parser();
@@ -42,10 +43,14 @@ let parser = new Parser();
   let coinNameCount3 = [...masterFeed].filter(x => x === coinName3).length;
   let coinCount3 = coinTickerCount3 + coinNameCount3
 
+  coinRank = [coinCount1, coinCount2, coinCount3]
+  coinRank.sort(function(a, b){return b - a});
+
   console.log(masterFeed)
   console.log("doge count: " + coinCount1)
   console.log("shib count: " + coinCount2)
   console.log("eth count: " + coinCount3)
+  console.log("coinRank: " + coinRank)
 
 })();
 
