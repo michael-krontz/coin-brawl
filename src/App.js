@@ -25,18 +25,27 @@ let parser = new Parser();
   let masterFeed = (_.split(masterFeedLowercased, ` `))
 
   let coinTicker1 = 'doge';
-  var coinTickerCount1 = [...masterFeed].filter(x => x === coinTicker1).length;
+  let coinName1 = 'dogecoin'
+  let coinTickerCount1 = [...masterFeed].filter(x => x === coinTicker1).length;
+  let coinNameCount1 = [...masterFeed].filter(x => x === coinName1).length;
+  let coinCount1 = coinTickerCount1 + coinNameCount1
 
   let coinTicker2 = 'shib';
-  var coinTickerCount2 = [...masterFeed].filter(x => x === coinTicker2).length;
+  let coinName2 = 'shiba'
+  let coinTickerCount2 = [...masterFeed].filter(x => x === coinTicker2).length;
+  let coinNameCount2 = [...masterFeed].filter(x => x === coinName2).length;
+  let coinCount2 = coinTickerCount2 + coinNameCount2
 
   let coinTicker3 = 'eth';
-  var coinTickerCount3 = [...masterFeed].filter(x => x === coinTicker3).length;
+  let coinName3 = 'ethereum'
+  let coinTickerCount3 = [...masterFeed].filter(x => x === coinTicker3).length;
+  let coinNameCount3 = [...masterFeed].filter(x => x === coinName3).length;
+  let coinCount3 = coinTickerCount3 + coinNameCount3
 
   console.log(masterFeed)
-  console.log("doge count: " + coinTickerCount1)
-  console.log("shib count: " + coinTickerCount2)
-  console.log("eth count: " + coinTickerCount3)
+  console.log("doge count: " + coinCount1)
+  console.log("shib count: " + coinCount2)
+  console.log("eth count: " + coinCount3)
 
 })();
 
