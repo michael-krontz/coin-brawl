@@ -28,13 +28,13 @@ var _ = require('lodash')
     let masterFeedLowercased = (_.lowerCase(masterFeedRaw))
     let masterFeed = (_.split(masterFeedLowercased, ` `))
     
-    let coinTicker1 = ticker1;
+    let coinTicker1 = 'doge';
     let coinName1 = 'dogecoin'
     let coinTickerCount1 = [...masterFeed].filter(x => x === coinTicker1).length;
     let coinNameCount1 = [...masterFeed].filter(x => x === coinName1).length;
     let coinCount1 = coinTickerCount1 + coinNameCount1
   
-    let coinTicker2 = ticker2;
+    let coinTicker2 = 'shib';
     let coinName2 = 'shiba'
     let coinTickerCount2 = [...masterFeed].filter(x => x === coinTicker2).length;
     let coinNameCount2 = [...masterFeed].filter(x => x === coinName2).length;
@@ -89,9 +89,7 @@ var _ = require('lodash')
     console.log("shib count: " + coinCount2)
     console.log("eth count: " + coinCount3)
     console.log("btc count: " + coinCount4)
-    console.log("coinArray: " + coinTickerArray)
-    console.log("coinTickerArray: " + coinTickerArray[0])
-    console.log("coinNameArray: " + coinNameArray)
+    console.log("coinTickerArray: " + coinTickerArray)
   })();
 
 function CoinCard() {
