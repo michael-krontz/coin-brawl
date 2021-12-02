@@ -8,7 +8,7 @@ const accountIcon = <FontAwesomeIcon icon={faUserCircle} />
 var _ = require('lodash')
 
 let masterFeedRaw = []
-let coinRanking = []
+let coinArray = []
 
 let Parser = require('rss-parser');
 let parser = new Parser();
@@ -24,7 +24,7 @@ let parser = new Parser();
   
   let masterFeedLowercased = (_.lowerCase(masterFeedRaw))
   let masterFeed = (_.split(masterFeedLowercased, ` `))
-
+  
   let coinTicker1 = 'doge';
   let coinName1 = 'dogecoin'
   let coinTickerCount1 = [...masterFeed].filter(x => x === coinTicker1).length;
@@ -43,46 +43,50 @@ let parser = new Parser();
   let coinNameCount3 = [...masterFeed].filter(x => x === coinName3).length;
   let coinCount3 = coinTickerCount3 + coinNameCount3
 
-  let coinSort = [coinCount1, coinCount2, coinCount3]
-  coinSort.sort(function(a, b){return b - a});
+  let coinTicker4 = 'btc';
+  let coinName4 = 'bitcoin'
+  let coinTickerCount4 = [...masterFeed].filter(x => x === coinTicker4).length;
+  let coinNameCount4 = [...masterFeed].filter(x => x === coinName4).length;
+  let coinCount4 = coinTickerCount4 + coinNameCount4
 
+  let coins = [
+    {
+      coinTicker: coinTicker1, 
+      coinName: coinName1, 
+      coinCount: coinCount1,
+    },
 
-  const coinRank1 = {
-    coinTicker: coinTicker1,
-    coinName: coinName1,
-    coinCount: coinCount1
-  }
+    {
+      coinTicker: coinTicker2, 
+      coinName: coinName2, 
+      coinCount: coinCount2,
+    },
+  
+    {
+      coinTicker: coinTicker3, 
+      coinName: coinName3, 
+      coinCount: coinCount3,
+    },
+    
+    {
+      coinTicker: coinTicker4, 
+      coinName: coinName4, 
+      coinCount: coinCount4,
+    }
+  ]
 
-  const coinRank2 = {
-    coinTicker: coinTicker2,
-    coinName: coinName2,
-    coinCount: coinCount2
-  }
+coins.sort((a, b) => b.coinCount - a.coinCount);
 
-  const coinRank3 = {
-    coinTicker: coinTicker3,
-    coinName: coinName3,
-    coinCount: coinCount3
-  }
-
-  let coinRankArray = [coinRank1.coinCount, coinRank2.coinCount, coinRank3.coinCount]
-  coinRankArray.sort(function(a, b){return b - a});
-
- for (let i=0; i < coinRankArray.length; i++) {
-  coinRanking.push(coinRankArray[i])
-}
-
-  // let coinRankTickerArray = [coinRank1, coinRank2, coinRank3]
-
+coins.forEach((e) => {
+  coinArray.push(e.coinTicker)
+});
 
   console.log(masterFeed)
   console.log("doge count: " + coinCount1)
   console.log("shib count: " + coinCount2)
   console.log("eth count: " + coinCount3)
-  console.log("coinSort: " + coinSort)
-  console.log("coinRankArray: " + coinRankArray)
-  // console.log("coinRankTickerArray: " + coinRankTickerArray)
-  console.log("coinRanking: " + coinRanking)
+  console.log("btc count: " + coinCount4)
+  console.log("coinArray: " + coinArray)
 
 })();
 
@@ -148,6 +152,7 @@ function App() {
           <div className="account-icon">{accountIcon}</div>
         </div>
       </header>
+      <CoinCard></CoinCard>
       <CoinCard></CoinCard>
       <CoinCard></CoinCard>
       <CoinCard></CoinCard>
