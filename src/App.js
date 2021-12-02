@@ -24,13 +24,19 @@ let parser = new Parser();
   let masterFeedLowercased = (_.lowerCase(masterFeedRaw))
   let masterFeed = (_.split(masterFeedLowercased, ` `))
 
-  var coinTicker = 'doge';
+  let coinTicker1 = 'doge';
+  var coinTickerCount1 = [...masterFeed].filter(x => x === coinTicker1).length;
 
+  let coinTicker2 = 'shib';
+  var coinTickerCount2 = [...masterFeed].filter(x => x === coinTicker2).length;
 
-  var coinTickerCount = [...masterFeed].filter(x => x === coinTicker).length;
+  let coinTicker3 = 'eth';
+  var coinTickerCount3 = [...masterFeed].filter(x => x === coinTicker3).length;
 
   console.log(masterFeed)
-  console.log("doge count: " + coinTickerCount)
+  console.log("doge count: " + coinTickerCount1)
+  console.log("shib count: " + coinTickerCount2)
+  console.log("eth count: " + coinTickerCount3)
 
 })();
 
