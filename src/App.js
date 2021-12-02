@@ -1,4 +1,6 @@
 import './App.css';
+import React from 'react';
+import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue } from 'recoil';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNewspaper, faSearch, faRetweet, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 const headlineIcon = <FontAwesomeIcon icon={faNewspaper} />
@@ -87,44 +89,153 @@ coins.forEach((e) => {
   console.log("eth count: " + coinCount3)
   console.log("btc count: " + coinCount4)
   console.log("coinArray: " + coinArray)
-
 })();
 
 
 function CoinCard() {
+  const coinTicker1 = useRecoilValue(ticker1);
+  const coinName1 = useRecoilValue(name1);
+  const coinTicker2 = useRecoilValue(ticker2);
+  const coinName2 = useRecoilValue(name2);
+  const coinTicker3 = useRecoilValue(ticker3);
+  const coinName3 = useRecoilValue(name3);
+  const coinTicker4 = useRecoilValue(ticker4);
+  const coinName4 = useRecoilValue(name4);
+
   return (
-    <div className="coin-card">
-        <div className="coin-card-header">
-        <div className="coin-rank"></div>
-          <h2 className="coin-ticker">DOGE</h2>
-          <button className="buy-button">Buy</button>
-        </div>
-
-        <div className="coin-card-content">
-          <div className="coin-card-content-left">
-            <div className="coin-name">Dogecoin</div>
-            <div className="coin-price-usd">$0.22</div>
-            <div className="coin-price-ticker">+$0.000521 (0.24%)</div>
+    <>
+      <div className="coin-card">
+          <div className="coin-card-header">
+          <div className="coin-rank"></div>
+            <h2 className="coin-ticker">{coinTicker1}</h2>
+            <button className="buy-button">Buy</button>
           </div>
-          
-          <div className="coin-card-content-right">
-            <div className="stat-wrapper">
-              <div className="headline-stat">7</div>
-              <div className="headline-icon">{headlineIcon}</div>
-            </div>
 
-            <div className="stat-wrapper">
-              <div className="twitter-stat">9.24k</div>
-              <div className="twitter-icon">{tweetIcon}</div>
+          <div className="coin-card-content">
+            <div className="coin-card-content-left">
+              <div className="coin-name">{coinName1}</div>
+              <div className="coin-price-usd">$0.22</div>
+              <div className="coin-price-ticker">+$0.000521 (0.24%)</div>
             </div>
+            
+            <div className="coin-card-content-right">
+              <div className="stat-wrapper">
+                <div className="headline-stat">7</div>
+                <div className="headline-icon">{headlineIcon}</div>
+              </div>
 
-            <div className="stat-wrapper">
-              <div className="google-trend-stat">29k</div>
-              <div className="google-icon">{searchIcon}</div>
+              <div className="stat-wrapper">
+                <div className="twitter-stat">9.24k</div>
+                <div className="twitter-icon">{tweetIcon}</div>
+              </div>
+
+              <div className="stat-wrapper">
+                <div className="google-trend-stat">29k</div>
+                <div className="google-icon">{searchIcon}</div>
+              </div>
             </div>
           </div>
-        </div>
-    </div>
+      </div>
+
+      <div className="coin-card">
+          <div className="coin-card-header">
+          <div className="coin-rank"></div>
+            <h2 className="coin-ticker">{coinTicker2}</h2>
+            <button className="buy-button">Buy</button>
+          </div>
+
+          <div className="coin-card-content">
+            <div className="coin-card-content-left">
+              <div className="coin-name">{coinName2}</div>
+              <div className="coin-price-usd">$0.22</div>
+              <div className="coin-price-ticker">+$0.000521 (0.24%)</div>
+            </div>
+            
+            <div className="coin-card-content-right">
+              <div className="stat-wrapper">
+                <div className="headline-stat">7</div>
+                <div className="headline-icon">{headlineIcon}</div>
+              </div>
+
+              <div className="stat-wrapper">
+                <div className="twitter-stat">9.24k</div>
+                <div className="twitter-icon">{tweetIcon}</div>
+              </div>
+
+              <div className="stat-wrapper">
+                <div className="google-trend-stat">29k</div>
+                <div className="google-icon">{searchIcon}</div>
+              </div>
+            </div>
+          </div>
+      </div>
+      
+      <div className="coin-card">
+          <div className="coin-card-header">
+          <div className="coin-rank"></div>
+            <h2 className="coin-ticker">{coinTicker3}</h2>
+            <button className="buy-button">Buy</button>
+          </div>
+
+          <div className="coin-card-content">
+            <div className="coin-card-content-left">
+              <div className="coin-name">{coinName3}</div>
+              <div className="coin-price-usd">$0.22</div>
+              <div className="coin-price-ticker">+$0.000521 (0.24%)</div>
+            </div>
+            
+            <div className="coin-card-content-right">
+              <div className="stat-wrapper">
+                <div className="headline-stat">7</div>
+                <div className="headline-icon">{headlineIcon}</div>
+              </div>
+
+              <div className="stat-wrapper">
+                <div className="twitter-stat">9.24k</div>
+                <div className="twitter-icon">{tweetIcon}</div>
+              </div>
+
+              <div className="stat-wrapper">
+                <div className="google-trend-stat">29k</div>
+                <div className="google-icon">{searchIcon}</div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div className="coin-card">
+          <div className="coin-card-header">
+          <div className="coin-rank"></div>
+            <h2 className="coin-ticker">{coinTicker4}</h2>
+            <button className="buy-button">Buy</button>
+          </div>
+
+          <div className="coin-card-content">
+            <div className="coin-card-content-left">
+              <div className="coin-name">{coinName4}</div>
+              <div className="coin-price-usd">$0.22</div>
+              <div className="coin-price-ticker">+$0.000521 (0.24%)</div>
+            </div>
+            
+            <div className="coin-card-content-right">
+              <div className="stat-wrapper">
+                <div className="headline-stat">7</div>
+                <div className="headline-icon">{headlineIcon}</div>
+              </div>
+
+              <div className="stat-wrapper">
+                <div className="twitter-stat">9.24k</div>
+                <div className="twitter-icon">{tweetIcon}</div>
+              </div>
+
+              <div className="stat-wrapper">
+                <div className="google-trend-stat">29k</div>
+                <div className="google-icon">{searchIcon}</div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </>
   )
 }
 
@@ -143,22 +254,63 @@ function JoinButton() {
   )
 }
 
+const ticker1 = atom({
+  key: 'ticker1', // unique ID (with respect to other atoms/selectors)
+  default: 'DOGE', // default value (aka initial value)
+});
+
+const name1 = atom({
+  key: 'name1', // unique ID (with respect to other atoms/selectors)
+  default: 'Dogecoin', // default value (aka initial value)
+});
+
+const ticker2 = atom({
+  key: 'ticker2', // unique ID (with respect to other atoms/selectors)
+  default: 'SHIB', // default value (aka initial value)
+});
+
+const name2 = atom({
+  key: 'name2', // unique ID (with respect to other atoms/selectors)
+  default: 'Shiba Inu', // default value (aka initial value)
+});
+
+const ticker3 = atom({
+  key: 'ticker3', // unique ID (with respect to other atoms/selectors)
+  default: 'ETH', // default value (aka initial value)
+});
+
+const name3 = atom({
+  key: 'name3', // unique ID (with respect to other atoms/selectors)
+  default: 'Ethereum', // default value (aka initial value)
+});
+
+const ticker4 = atom({
+  key: 'ticker4', // unique ID (with respect to other atoms/selectors)
+  default: 'BTC', // default value (aka initial value)
+});
+
+const name4 = atom({
+  key: 'name4', // unique ID (with respect to other atoms/selectors)
+  default: 'Bitcoin', // default value (aka initial value)
+});
+
+
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <div className="header-wrapper">
-          <div>Coin Brawl</div>
-          <div className="account-icon">{accountIcon}</div>
-        </div>
-      </header>
-      <CoinCard></CoinCard>
-      <CoinCard></CoinCard>
-      <CoinCard></CoinCard>
-      <CoinCard></CoinCard>
-      <JoinCard></JoinCard>
-      <JoinButton></JoinButton>
-    </div>
+    <RecoilRoot>
+      <div className="App">
+        <header className="App-header">
+          <div className="header-wrapper">
+            <div>Coin Brawl</div>
+            <div className="account-icon">{accountIcon}</div>
+          </div>
+        </header>
+        <CoinCard></CoinCard>
+        <JoinCard></JoinCard>
+        <JoinButton></JoinButton>
+      </div>
+    </RecoilRoot>
   );
 }
 
