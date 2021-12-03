@@ -51,7 +51,8 @@ var _ = require('lodash')
     let coinTickerCount4 = [...masterFeed].filter(x => x === coinTicker4).length;
     let coinNameCount4 = [...masterFeed].filter(x => x === coinName4).length;
     let coinCount4 = coinTickerCount4 + coinNameCount4
-  
+    let key = "crypto"
+
     let coins = [
       {
         coinTicker: coinTicker1, 
@@ -78,6 +79,10 @@ var _ = require('lodash')
       }
     ]
   
+    coins[key] = "currency"
+    console.log(coins)
+
+
   coins.sort((a, b) => b.coinCount - a.coinCount);  
   coins.forEach((e) => {
     coinTickerArray.push(e.coinTicker)
