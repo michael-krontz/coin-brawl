@@ -51,50 +51,54 @@ var _ = require('lodash')
     let coinTickerCount4 = [...masterFeed].filter(x => x === coinTicker4).length;
     let coinNameCount4 = [...masterFeed].filter(x => x === coinName4).length;
     let coinCount4 = coinTickerCount4 + coinNameCount4
-    let key = "crypto"
 
-    let coins = [
-      {
-        coinTicker: coinTicker1, 
-        coinName: coinName1, 
-        coinCount: coinCount1,
-      },
-  
-      {
-        coinTicker: coinTicker2, 
-        coinName: coinName2, 
-        coinCount: coinCount2,
-      },
-    
-      {
-        coinTicker: coinTicker3, 
-        coinName: coinName3, 
-        coinCount: coinCount3,
-      },
-      
-      {
-        coinTicker: coinTicker4, 
-        coinName: coinName4, 
-        coinCount: coinCount4,
-      }
-    ]
-  
-    coins[key] = "currency"
-    console.log(coins)
+    let coin1 = { 
+      coinTicker: coinTicker1, 
+      coinName: coinName1, 
+      coinCount: coinCount1,
+    }
 
+    let coin2 = { 
+      coinTicker: coinTicker2, 
+      coinName: coinName2, 
+      coinCount: coinCount2,
+    }
 
-  coins.sort((a, b) => b.coinCount - a.coinCount);  
-  coins.forEach((e) => {
-    coinTickerArray.push(e.coinTicker)
-    coinNameArray.push(e.coinName)
-  });
+    let coin3= { 
+      coinTicker: coinTicker3, 
+      coinName: coinName3, 
+      coinCount: coinCount3,
+    }
+
+    let coin4 = { 
+      coinTicker: coinTicker4, 
+      coinName: coinName4, 
+      coinCount: coinCount4,
+    }
+
+    let coins = [coin1, coin2, coin3, coin4]
+
+    coins.sort((a, b) => b.coinCount - a.coinCount);  
+    coinTickerArray.push(Object.values(coins[0]))
+    coinTickerArray.push(Object.values(coins[1]))
+    coinTickerArray.push(Object.values(coins[2]))
+    coinTickerArray.push(Object.values(coins[3]))
+
+    let coinRank1 = coinTickerArray[0]
+    let coinRank2 = coinTickerArray[1]
+    let coinRank3 = coinTickerArray[2]
+    let coinRank4 = coinTickerArray[3]
   
     console.log(masterFeed)
     console.log("doge count: " + coinCount1)
     console.log("shib count: " + coinCount2)
     console.log("eth count: " + coinCount3)
     console.log("btc count: " + coinCount4)
-    console.log("coinTickerArray: " + coinTickerArray)
+    console.log("coinTickerArray: " + coinTickerArray[0])
+    console.log("coinRank1: " + coinRank1)
+    console.log("coinRank2: " + coinRank2)
+    console.log("coinRank3: " + coinRank3)
+    console.log("coinRank4: " + coinRank4)
   })();
 
 function CoinCard() {
@@ -298,6 +302,12 @@ const name4 = atom({
   key: 'name4', // unique ID (with respect to other atoms/selectors)
   default: 'Bitcoin', // default value (aka initial value)
 });
+
+// const coinsArray = atom({
+//   key: 'coinsArray', // unique ID (with respect to other atoms/selectors)
+//   default: [], // default value (aka initial value)
+// });
+
 
 
 function App() {
