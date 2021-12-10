@@ -76,9 +76,15 @@ var _ = require('lodash')
       coinCount: coinCount4,
     }
 
+    // console.log(Object.values(coin1));
+    // console.log(Object.values(coin2));
+    // console.log(Object.values(coin3));
+    // console.log(Object.values(coin4));
+
     let coins = [coin1, coin2, coin3, coin4]
 
     coins.sort((a, b) => b.coinCount - a.coinCount);  
+    // coins.forEach((e) => {
     coinTickerArray.push(Object.values(coins[0]))
     coinTickerArray.push(Object.values(coins[1]))
     coinTickerArray.push(Object.values(coins[2]))
@@ -88,6 +94,10 @@ var _ = require('lodash')
     let coinRank2 = coinTickerArray[1]
     let coinRank3 = coinTickerArray[2]
     let coinRank4 = coinTickerArray[3]
+
+
+    // coinNameArray.push(e.coinName)
+  // });
   
     console.log(masterFeed)
     console.log("doge count: " + coinCount1)
@@ -99,6 +109,8 @@ var _ = require('lodash')
     console.log("coinRank2: " + coinRank2)
     console.log("coinRank3: " + coinRank3)
     console.log("coinRank4: " + coinRank4)
+
+
   })();
 
 function CoinCard() {
