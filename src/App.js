@@ -1,5 +1,8 @@
 import './App.css';
 import React from 'react';
+import useAxios, { configure } from 'axios-hooks'
+import Axios from 'axios'
+import LRU from 'lru-cache'
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNewspaper, faSearch, faRetweet, faUserCircle } from '@fortawesome/free-solid-svg-icons'
@@ -8,6 +11,31 @@ const searchIcon = <FontAwesomeIcon icon={faSearch} />
 const tweetIcon = <FontAwesomeIcon icon={faRetweet} />
 const accountIcon = <FontAwesomeIcon icon={faUserCircle} />
 var _ = require('lodash')
+
+const axios = Axios.create({
+  baseURL: 'https://api.kucoin.com/',
+})
+
+const cache = new LRU({ max: 10 })
+configure({ axios, cache })
+
+function DataFetch() {
+  const [{ data: getData, loading: getLoading, error: getError }] = useAxios('/api/v1/prices')
+
+  if (getLoading) return <p>Loading...</p>
+  if (getError) return <p>Error!</p>
+  if (getData) {
+    fetchData()
+  }
+
+  function fetchData() {
+    var cardData = getData  
+    console.log(cardData.data)
+  }
+
+  return null
+}
+
 
   let masterFeedRaw = []
   let coinNameArray = []
@@ -332,6 +360,7 @@ function App() {
             <div className="account-icon">{accountIcon}</div>
           </div>
         </header>
+        <DataFetch />
         <CoinCard></CoinCard>
         <JoinCard></JoinCard>
         <JoinButton></JoinButton>
