@@ -3,6 +3,7 @@ import React from 'react';
 import useAxios, { configure } from 'axios-hooks'
 import Axios from 'axios'
 import LRU from 'lru-cache'
+import Kucoin from 'kucoin-sdk'
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNewspaper, faSearch, faRetweet, faUserCircle } from '@fortawesome/free-solid-svg-icons'
@@ -12,20 +13,107 @@ const tweetIcon = <FontAwesomeIcon icon={faRetweet} />
 const accountIcon = <FontAwesomeIcon icon={faUserCircle} />
 var _ = require('lodash')
 
+const KucoinInstance = new Kucoin({
+  KEY: '61b49686fde16200018ffa50',
+  SECRET: '1ccd9e72-c1fd-b2aa-f46022c7454e',
+  isTest: false,
+  PASSPHRASE: '110707',
+})
+
+const requestInterceptor = KucoinInstance.addRequestInterceptor(
+  config => config,
+  error => error
+)
+
+const responseInterceptor = KucoinInstance.addResponseInterceptor(
+  response => response,
+  error => error
+)
+
+
+const placeOrder = async() => {
+  KucoinInstance.placeANewOrder({ clientOid: '93086689', side: 'buy', symbol: 'DOGE/USDT', size: '6.25' }).then(console.log).catch(console.error)
+  KucoinInstance.removeRequestInterceptor(requestInterceptor)
+    // const getTimestampRl = await API.rest.Others.getTimestamp();
+    // console.log(getTimestampRl.data);
+  };
+
+
+
+// const config = {
+//   baseUrl: 'https://api.kucoin.com/',
+//   apiAuth: {
+//       key: '61b49686fde16200018ffa50',
+//       secret: '1ccd9e72-c1fd-b2aa-f46022c7454e',
+//       passphrase: '110707'
+//   }
+// }
+
+
+// API.init(require(config));
+
+
+// const config = {
+//   apiKey: '61b49686fde16200018ffa50',
+//   secretKey: '1ccd9e72-c1fd-b2aa-f46022c7454e',
+//   passphrase: '110707',
+//   environment: 'live'
+// }
+
+// const Trade = {}
+
+
 const axios = Axios.create({
   baseURL: 'https://api.kucoin.com/',
 })
+
+// let params = {
+//   clientOid: 'qwerty07070707',
+//     side: 'buy',
+//     symbol: 'DOGE/USDT',
+//     type: 'market',
+//     size: 6.25
+// }
+
+
+
+
+
+  // let endpoint = '/api/v1/orders'
+  // let url = 'https://api.kucoin.com' + endpoint
+  // let result = axios.post(url, params, this.sign(endpoint, params,'POST'))
+  // return result.data
+  // }
+
+// Trade.placeOrder = async function(params) {
+//   let endpoint = '/api/v1/orders'
+//   let url = this.baseURL + endpoint
+//   let result = await axios.post(url, params, this.sign(endpoint, params,'POST'))
+//   return result.data
+// }
+
+// async function getAccounts() {
+//   try {
+//     let r = await api.getAccounts()
+//     console.log(r.data)
+//   } catch(err) {
+//     console.log(err)
+//   } 
+// }
+
+
 
 const cache = new LRU({ max: 10 })
 configure({ axios, cache })
 
 function DataFetch() {
-  const [{ data: getData, loading: getLoading, error: getError }] = useAxios('/api/v1/prices')
+  const [{ data: getData, loading: getLoading, error: getError }] = useAxios('/api/v1/timestamp')
 
   if (getLoading) return <p>Loading...</p>
   if (getError) return <p>Error!</p>
   if (getData) {
     fetchData()
+    // getAccounts()
   }
 
   function fetchData() {
@@ -35,6 +123,10 @@ function DataFetch() {
 
   return null
 }
+
+
+
+
 
 
   let masterFeedRaw = []
@@ -299,9 +391,29 @@ function JoinCard() {
 
 function JoinButton() {
   return (
-    <button className="join-button">Join</button>
+    <button className="join-button" onClick={placeOrder}>Trade</button>
   )
 }
+
+
+
+// function trade() {
+
+//   api.getAccounts().then((r) => {
+//     console.log(r.data)
+//   }).catch((e) => {
+//     console.log(e))
+//   })
+
+
+//   try {
+//     let r = api.placeOrder(params)
+
+//     console.log(r.data)
+//   } catch(err) {
+//     console.log(err)
+//   } 
+// }
 
 const ticker1 = atom({
   key: 'ticker1', // unique ID (with respect to other atoms/selectors)
