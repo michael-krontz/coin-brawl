@@ -1,6 +1,3 @@
-/**
- * copy to config.js, and write configure
- */
  module.exports = {
     /** set API baseUrl, */
     /**   if not set this key, or empty, or false, or undefined, */
