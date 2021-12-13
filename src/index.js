@@ -1,17 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+const API = require('kucoin-node-sdk');
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+API.init(require('./config'));
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const main = async () => {
+  const getTimestampRl = await API.rest.Others.getTimestamp();
+  console.log(getTimestampRl.data);
+
+  // const res = await API.rest.Trade.Orders.postOrder({ clientOid: 'qwerty07070707', side: 'buy', symbol: 'DOGE-USDT', type: 'market', size: 18.75 });
+  const res = await API.rest.Market.Currencies.getFiatPrice();
+  console.log(res);
+};
+
+// run rest main
+main();

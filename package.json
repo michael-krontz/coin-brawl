@@ -11,7 +11,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.24.0",
     "axios-hooks": "^3.0.0",
-    "kucoin-sdk": "^2.0.1",
+    "kucoin-node-sdk": "^1.0.4",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

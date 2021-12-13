@@ -3,7 +3,6 @@ import React from 'react';
 import useAxios, { configure } from 'axios-hooks'
 import Axios from 'axios'
 import LRU from 'lru-cache'
-import Kucoin from 'kucoin-sdk'
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNewspaper, faSearch, faRetweet, faUserCircle } from '@fortawesome/free-solid-svg-icons'
@@ -13,30 +12,49 @@ const tweetIcon = <FontAwesomeIcon icon={faRetweet} />
 const accountIcon = <FontAwesomeIcon icon={faUserCircle} />
 var _ = require('lodash')
 
-const KucoinInstance = new Kucoin({
-  KEY: '61b49686fde16200018ffa50',
-  SECRET: '1ccd9e72-c1fd-b2aa-f46022c7454e',
-  isTest: false,
-  PASSPHRASE: '110707',
+const axios = Axios.create({
+  baseURL: 'https://api.kucoin.com/',
 })
-
-const requestInterceptor = KucoinInstance.addRequestInterceptor(
-  config => config,
-  error => error
-)
-
-const responseInterceptor = KucoinInstance.addResponseInterceptor(
-  response => response,
-  error => error
-)
+// const api = require('kucoin-node-api');
 
 
-const placeOrder = async() => {
-  KucoinInstance.placeANewOrder({ clientOid: '93086689', side: 'buy', symbol: 'DOGE/USDT', size: '6.25' }).then(console.log).catch(console.error)
-  KucoinInstance.removeRequestInterceptor(requestInterceptor)
-    // const getTimestampRl = await API.rest.Others.getTimestamp();
-    // console.log(getTimestampRl.data);
-  };
+// const config = {
+//   apiKey: "61b49686fde16200018ffa50",
+//   secretKey: "1ccd9e72-c1fd-b2aa-f46022c7454e",
+//   passphrase: "110707",
+//   environment: "live"
+// };
+
+// api.init(config);
+// console.log("Initialized");
+
+
+// const KucoinInstance = new Kucoin({
+//   KEY: '61b49686fde16200018ffa50',
+//   SECRET: '1ccd9e72-c1fd-b2aa-f46022c7454e',
+//   isTest: false,
+//   PASSPHRASE: '110707',
+// })
+
+// const requestInterceptor = KucoinInstance.addRequestInterceptor(
+//   config => config,
+//   error => error
+// )
+
+// const responseInterceptor = KucoinInstance.addResponseInterceptor(
+//   response => response,
+//   error => error
+// )
+
+
+// const placeOrder = async() => {
+//   try {
+//     let r = await api.getAccounts()
+//     console.log(r.data)
+//   } catch(err) {
+//     console.log(err)
+//   } 
+// };
 
 
 
@@ -61,11 +79,6 @@ const placeOrder = async() => {
 // }
 
 // const Trade = {}
-
-
-const axios = Axios.create({
-  baseURL: 'https://api.kucoin.com/',
-})
 
 // let params = {
 //   clientOid: 'qwerty07070707',
@@ -391,7 +404,7 @@ function JoinCard() {
 
 function JoinButton() {
   return (
-    <button className="join-button" onClick={placeOrder}>Trade</button>
+    <button className="join-button">Trade</button>
   )
 }
 
