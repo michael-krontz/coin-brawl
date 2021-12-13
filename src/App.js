@@ -20,12 +20,13 @@ const cache = new LRU({ max: 10 })
 configure({ axios, cache })
 
 function DataFetch() {
-  const [{ data: getData, loading: getLoading, error: getError }] = useAxios('/api/v1/prices')
+  const [{ data: getData, loading: getLoading, error: getError }] = useAxios('/api/v1/timestamp')
 
   if (getLoading) return <p>Loading...</p>
   if (getError) return <p>Error!</p>
   if (getData) {
     fetchData()
+    // getAccounts()
   }
 
   function fetchData() {
@@ -35,6 +36,10 @@ function DataFetch() {
 
   return null
 }
+
+
+
+
 
 
   let masterFeedRaw = []
@@ -299,9 +304,29 @@ function JoinCard() {
 
 function JoinButton() {
   return (
-    <button className="join-button">Join</button>
+    <button className="join-button">Trade</button>
   )
 }
+
+
+
+// function trade() {
+
+//   api.getAccounts().then((r) => {
+//     console.log(r.data)
+//   }).catch((e) => {
+//     console.log(e))
+//   })
+
+
+//   try {
+//     let r = api.placeOrder(params)
+
+//     console.log(r.data)
+//   } catch(err) {
+//     console.log(err)
+//   } 
+// }
 
 const ticker1 = atom({
   key: 'ticker1', // unique ID (with respect to other atoms/selectors)
