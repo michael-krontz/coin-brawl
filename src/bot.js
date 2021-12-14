@@ -2,12 +2,12 @@ const API = require('kucoin-node-sdk');
 
 API.init(require('./config'));
 
-const main = async () => {
-  const getTimestampRl = await API.rest.Others.getTimestamp();
-  console.log(getTimestampRl.data);
+const Main = async () => {
+//   const getTimestampRl = await API.rest.Others.getTimestamp();
+//   console.log(getTimestampRl.data);
 
 // Buy
-//   const res = await API.rest.Trade.Orders.postOrder({ clientOid: 'qwerty07070707', side: 'buy', symbol: 'DOGE-USDT', type: 'market', funds: 24 });
+//   const res = await API.rest.Trade.Orders.postOrder({ clientOid: 'qwerty07070707', side: 'buy', symbol: 'UNB-USDT', type: 'market', funds: 20 });
 
 // Sell
 //   const res = await API.rest.Trade.Orders.postOrder({ clientOid: 'qwerty07070707', side: 'sell', symbol: 'DOGE-USDT', type: 'market', funds: 24 });
@@ -18,5 +18,4 @@ const main = async () => {
 };
 
 // run rest main
-main();
-
+Main();

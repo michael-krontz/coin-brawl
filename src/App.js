@@ -11,6 +11,24 @@ const searchIcon = <FontAwesomeIcon icon={faSearch} />
 const tweetIcon = <FontAwesomeIcon icon={faRetweet} />
 const accountIcon = <FontAwesomeIcon icon={faUserCircle} />
 var _ = require('lodash')
+const API = require('kucoin-node-sdk');
+API.init(require('./config'));
+
+const Main = async () => {
+  //   const getTimestampRl = await API.rest.Others.getTimestamp();
+  //   console.log(getTimestampRl.data);
+
+    // Get Fiat Price List
+    const res = await API.rest.Market.Currencies.getFiatPrice();
+    console.log(res);
+  
+  // Buy
+  //   const res = await API.rest.Trade.Orders.postOrder({ clientOid: 'qwerty07070707', side: 'buy', symbol: 'UNB-USDT', type: 'market', funds: 20 });
+  
+  // Sell
+  //   const res = await API.rest.Trade.Orders.postOrder({ clientOid: 'qwerty07070707', side: 'sell', symbol: 'DOGE-USDT', type: 'market', funds: 24 });
+  };
+
 
 const axios = Axios.create({
   baseURL: 'https://api.kucoin.com/',
@@ -21,7 +39,6 @@ configure({ axios, cache })
 
 function DataFetch() {
   const [{ data: getData, loading: getLoading, error: getError }] = useAxios('/api/v1/timestamp')
-
   if (getLoading) return <p>Loading...</p>
   if (getError) return <p>Error!</p>
   if (getData) {
@@ -37,13 +54,7 @@ function DataFetch() {
   return null
 }
 
-
-
-
-
-
   let masterFeedRaw = []
-  let coinNameArray = []
   let coinTickerArray = []
   
   let Parser = require('rss-parser');
@@ -304,7 +315,7 @@ function JoinCard() {
 
 function JoinButton() {
   return (
-    <button className="join-button">Trade</button>
+    <button className="join-button" onClick={Main}>Trade</button>
   )
 }
 
