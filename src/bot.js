@@ -12,9 +12,9 @@ const Main = async () => {
 // Sell
 //   const res = await API.rest.Trade.Orders.postOrder({ clientOid: 'qwerty07070707', side: 'sell', symbol: 'DOGE-USDT', type: 'market', funds: 24 });
 
-// Get Fiat Price List
-  const res = await API.rest.Market.Currencies.getFiatPrice();
-  console.log(res);
+// Get Get Order by ID
+//   const res = await API.rest.Trade.Orders.getOrderByID('61b8bc9c1e2c23000151ce27');
+//   console.log(res);
 };
 
 // run rest main
